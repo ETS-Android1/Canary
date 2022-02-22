@@ -2,7 +2,7 @@
 
 Canary is an android app that allows a user to view his Twitter timeline. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
-Time spent: 6 hours spent in total
+Time spent: 10 hours spent in total
 ## User Stories
 
 The following **required** functionality is completed:
@@ -28,7 +28,8 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Changed colors to match Twitter colors
+- [x] Made profiles rounded
 
 ## Video Walkthrough
 
@@ -44,7 +45,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+While developing I had some dependency issues when working with floating action buttons.
 
 ## Open-source libraries used
 
