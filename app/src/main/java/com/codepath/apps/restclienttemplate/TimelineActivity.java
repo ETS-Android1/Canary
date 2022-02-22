@@ -10,15 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,24 +42,8 @@ public class TimelineActivity extends AppCompatActivity {
     TweetsAdapter adapter;
     SwipeRefreshLayout swipeContainer;
     EndlessRecyclerViewScrollListener scrollListener;
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.compose){
-            // Navigate to compose activity
-            Intent intent = new Intent(this, ComposeActivity.class);
-            startActivityForResult(intent,REQUEST_CODE);
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    FloatingActionButton compose;
+    Context context;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -74,6 +61,7 @@ public class TimelineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
         client = CanaryApp.getRestClient(this);
+        context = this;
 
         swipeContainer = findViewById(R.id.swipeContainer);
 
@@ -88,6 +76,15 @@ public class TimelineActivity extends AppCompatActivity {
             public void onRefresh() {
                 Log.i(TAG,"Refreshed");
                 populateHomeTimeline();
+            }
+        });
+
+        compose = findViewById(R.id.compose);
+        compose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,ComposeActivity.class);
+                startActivityForResult(intent,REQUEST_CODE);
             }
         });
 
