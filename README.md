@@ -36,6 +36,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='video.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+Offline sqlite persistence walkthrough:
+
+<img src='offline.gif' title='Offline Walkthtough' width='' alt='Offline Walkthrough'/>
+
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
